@@ -6,7 +6,7 @@ Honestly, these are references only for myself, but if you find anything here us
 
 ## License
 
-This repository is under the [MIT License](https://github.com/Hyperzsb/leetcode-solutions/blob/master/LICENSE).
+This repository is under the [MIT License](https://github.com/Hyperzsb/leetcode-solutions/blob/main/LICENSE).
 
 Feel free to use it.
 
