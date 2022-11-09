@@ -19,8 +19,17 @@ help() {
 create() {
     mkdir "$2"
     touch "$2/solution.$1"
+
     vim "$2/solution.$1"
-    echo "Problem $2 in $1 created"
+    echo "Problem $2 solution in $1 language created."
+
+    IFS='-'
+    read -ra split_string <<< "$2"
+
+    git add .
+    git commit -S -s -m "feat(solution): add the solution in $1 to the problem ${split_string[0]}"
+
+    echo "Problem $2 solution in $1 language committed."
 }
 
 update() {
