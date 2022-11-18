@@ -17,10 +17,10 @@ help() {
 }
 
 create() {
-    mkdir "$2"
-    touch "$2/solution.$1"
+    mkdir "problems/$2"
+    touch "problems/$2/solution.$1"
 
-    vim "$2/solution.$1"
+    vim "problems/$2/solution.$1"
     echo "Problem $2 solution in $1 language created."
 
     IFS='-'
@@ -89,3 +89,4 @@ help)
     exit 1
     ;;
 esac
+
