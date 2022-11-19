@@ -32,7 +32,9 @@ struct ListNode* reverseList(struct ListNode* head) {
         current = current->next;
     }
     current->next = NULL;
-    
+
+    free(ptrList);
+
     return retHead;
 }
 
