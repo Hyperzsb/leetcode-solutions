@@ -51,7 +51,10 @@ int* preorder(struct Node* root, int* returnSize) {
             currentHeight--;
         }
     }
-    
+
+    free(indexes);
+    free(nodes);
+
     return preorderVals;
 }
 
