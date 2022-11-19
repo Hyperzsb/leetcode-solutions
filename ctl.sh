@@ -1,13 +1,16 @@
 #!/bin/bash
 
 help() {
-    echo -e "CTL Usage: ./ctl.sh <create|update|help> <--c|--cpp|--go|--js|--py> <name>\n"
+    echo -e "CTL Usage: ./ctl.sh COMMAND [OPTION] [PROBLEM_NAME]\n"
+
     echo -e "COMMAND"
-    echo -e "\t create \t create a new problem with a given language\n"
+    echo -e "\t create \t create a new problem with the given language\n"
     echo -e "\t update \t modify an existing problem, 
              \t \t either updating a solution in an existing language, 
              \t \t or adding another solution in a new language\n"
-    echo -e "\t help   \t print this help message\n"
+    echo -e "\t info   \t print the stats info about the given problem\n"
+    echo -e "\t help   \t print this help message and exist\n"
+
     echo -e "OPTION"
     echo -e "\t -c   \t use C language\n"
     echo -e "\t -cpp \t use C++ language\n"
@@ -40,6 +43,10 @@ create() {
 }
 
 update() {
+    echo "This feature has not been implemented yet."
+}
+
+info() {
     echo "This feature has not been implemented yet."
 }
 
@@ -84,13 +91,20 @@ create)
 
     create "$language" "$name"
     ;;
+
 update)
     update
     ;;
+
+info)
+    info
+    ;;
+
 help)
     help
     exit 0
     ;;
+
 *)
     help
     exit 1
