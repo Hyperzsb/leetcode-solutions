@@ -10,5 +10,7 @@ void rotate(int* nums, int numsSize, int k){
     for(int i = 0; i < numsSize; i++) {
         nums[i] = tempNums[i];
     }
+
+    free(tempNums);
 }
 
