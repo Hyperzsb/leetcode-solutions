@@ -17,6 +17,13 @@ help() {
 }
 
 create() {
+    if [ -d "problems/$2" ]; then
+        echo -e "The problem \"$2\" already exists. If you want to update it, try:\n"
+        echo -e "\t./ctl.sh update --$1 $2"
+
+        return
+    fi
+
     mkdir "problems/$2"
     touch "problems/$2/solution.$1"
 
