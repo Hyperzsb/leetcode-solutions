@@ -4,19 +4,24 @@ help() {
     echo -e "CTL Usage: ./ctl.sh COMMAND [OPTION] [PROBLEM_NAME]\n"
 
     echo -e "COMMAND"
-    echo -e "\t create \t create a new problem with the given language\n"
+    echo -e "\t create \t create a new problem with the given language"
     echo -e "\t update \t modify an existing problem, 
              \t \t either updating a solution in an existing language, 
-             \t \t or adding another solution in a new language\n"
-    echo -e "\t info   \t print the stats info about the given problem\n"
+             \t \t or adding another solution in a new language"
+    echo -e "\t info   \t print the stats info about the given problem"
     echo -e "\t help   \t print this help message and exist\n"
 
     echo -e "OPTION"
-    echo -e "\t -c   \t use C language\n"
-    echo -e "\t -cpp \t use C++ language\n"
-    echo -e "\t -go  \t use Go language\n"
-    echo -e "\t -js  \t use JavaScript language\n"
-    echo -e "\t -py  \t use Python language\n"
+    echo -e "\t -c     \t use the C programming language"
+    echo -e "\t -cpp   \t use the C++ programming language"
+    echo -e "\t -go    \t use the Go programming language"
+    echo -e "\t -js    \t use the JavaScript programming language"
+    echo -e "\t -py    \t use the Python programming language\n"
+
+    echo -e "EXAMPLES"
+    echo -e "\t ./ctl.sh create --c 123-A-New-Problem"
+    echo -e "\t ./ctl.sh update --go 123-A-New-Problem"
+    echo -e "\t ./ctl.sh info 123\n"
 }
 
 create() {
