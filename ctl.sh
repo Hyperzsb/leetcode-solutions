@@ -30,7 +30,7 @@ help() {
 create() {
     # Check whether there exists a problem with the same name as provided
     # If so, print the help message telling user yo use the `update` command instead, and exit
-    if [ -d "problems/$2" ]; then
+    if [[ -d "problems/$2" ]]; then
         echo -e "The problem \"$2\" already exists. If you want to update it, try:\n"
         echo -e "\t ./ctl.sh update --$1 $2"
         return
@@ -45,7 +45,7 @@ create() {
     echo -e "The new solution of the problem $2 in $1 programming language has been created\n"
 
     # Prompt a message to receive the confirmation of user whether to commit the new problem
-    read -p "Do you want to commit this new solution? (y/n, default y) " confirm
+    read -rp "Do you want to commit this new solution? (y/n, default y) " confirm
     # If user does not confirm, discard all changes, and exit
     if [[ "$confirm" == "n" ]]; then
         git reset --hard HEAD
@@ -66,7 +66,7 @@ create() {
 update() {
     # Check whether there exists a problem with the same name as provided
     # If not, print the help message telling user yo use the `create` command instead, and exit
-    if [ ! -d "problems/$2" ]; then
+    if [[ ! -d "problems/$2" ]]; then
         echo -e "The problem \"$2\" does not exist. If you want to create it, try:\n"
         echo -e "\t ./ctl.sh create --$1 $2"
         return
@@ -74,14 +74,14 @@ update() {
 
     # Check whether the updated solution is in a new language or not
     # If so, create a new file for the new language
-    if [ ! -f "problems/$2/solution.$1" ]; then
+    if [[ ! -f "problems/$2/solution.$1" ]]; then
         touch "problems/$2/solution.$1"
     fi
     vim "problems/$2/solution.$1"
     echo -e "The solution of the problem $2 in $1 programming language has been updated\n"
 
     # Prompt a message to receive the confirmation of user whether to commit the new problem
-    read -p "Do you want to commit this updated solution? (y/n, default y) " confirm
+    read -rp "Do you want to commit this updated solution? (y/n, default y) " confirm
     # If user does not confirm, discard all changes, and exit
     if [[ "$confirm" == "n" ]]; then
         git reset --hard HEAD
@@ -138,7 +138,7 @@ create)
 
     name="$1"
     shift
-    if [ -z "$name" ]; then
+    if [[ -z "$name" ]]; then
         echo -e "The problem name is required\n"
         help
         exit 2
@@ -176,7 +176,7 @@ update)
 
     name="$1"
     shift
-    if [ -z "$name" ]; then
+    if [[ -z "$name" ]]; then
         echo -e "The problem name is required\n"
         help
         exit 2
