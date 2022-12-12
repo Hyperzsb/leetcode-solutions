@@ -6,7 +6,7 @@ Honestly, these are references only for myself, but if you find anything here us
 
 ## CTL
 
-To create and update solutions more efficiently, I write a tiny Bash script to carry out this kind of general operations. You can also use this script in your own LeetCode repo and faciliate your coding and learning.
+To create and update solutions more efficiently, I write a tiny Bash script to carry out this kind of general operations. You can also use this script in your own LeetCode repo and facilitate your coding and learning.
 
 To learn more about this script, just execute:
 
