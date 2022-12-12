@@ -46,10 +46,11 @@ create() {
 
     # Prompt a message to receive the confirmation of user whether to commit the new problem
     read -rp "Do you want to commit this new solution? (y/n, default y) " confirm
+    echo -e ""
     # If user does not confirm, discard all changes, and exit
     if [[ "$confirm" == "n" ]]; then
         rm -rf "problems/$2"
-        echo -e "\nAll changes have been discarded"
+        echo -e "All changes have been discarded"
         return
     fi
 
@@ -82,10 +83,11 @@ update() {
 
     # Prompt a message to receive the confirmation of user whether to commit the new problem
     read -rp "Do you want to commit this updated solution? (y/n, default y) " confirm
+    echo -e ""
     # If user does not confirm, discard all changes, and exit
     if [[ "$confirm" == "n" ]]; then
         git reset --hard HEAD
-        echo -e "\nAll changes have been discarded"
+        echo -e "All changes have been discarded"
         return
     fi
 
