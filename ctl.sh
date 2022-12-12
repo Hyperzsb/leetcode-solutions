@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Help function is used to print the help message of this script
 help() {
     echo -e "CTL Usage: ./ctl.sh COMMAND [OPTION] [PROBLEM_NAME]\n"
 
@@ -84,10 +85,14 @@ info() {
     echo "This feature has not been implemented yet."
 }
 
+# Main procedure starts
+
 command="$1"
 shift
 
+# Parse command
 case "$command" in
+# If command `create` is specified
 create)
     language=""
 
@@ -125,7 +130,7 @@ create)
 
     create "$language" "$name"
     ;;
-
+# If command `update` is specified
 update)
     language=""
 
@@ -163,19 +168,20 @@ update)
 
     update "$language" "$name"
     ;;
-
+# If command `info` is specified
 info)
     info
     ;;
-
+# If command `help` is specified
 help)
     help
     exit 0
     ;;
-
+# If another undefined command is specified
 *)
     help
     exit 1
     ;;
 esac
 
+# Main procedure ends
