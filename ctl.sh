@@ -48,7 +48,7 @@ create() {
     read -rp "Do you want to commit this new solution? (y/n, default y) " confirm
     # If user does not confirm, discard all changes, and exit
     if [[ "$confirm" == "n" ]]; then
-        git reset --hard HEAD
+        rm -rf "problems/$2"
         echo -e "\nAll changes have been discarded"
         return
     fi
