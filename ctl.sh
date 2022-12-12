@@ -42,14 +42,14 @@ create() {
     touch "problems/$2/solution.$1"
     # Use Vim to edit the solution file
     vim "problems/$2/solution.$1"
-    echo -e "The new solution of the problem $2 in $1 programming language created.\n"
+    echo -e "The new solution of the problem $2 in $1 programming language has been created\n"
 
     # Prompt a message to receive the confirmation of user whether to commit the new problem
     read -p "Do you want to commit this new solution? (y/n, default y) " confirm
     # If user does not confirm, discard all changes, and exit
     if [[ "$confirm" == "n" ]]; then
-        rm -rf "problems/$2"
-        echo -e "\nThe new solution of the problem $2 in $1 programming language removed."
+        git reset --hard HEAD
+        echo -e "\nAll changes have been discarded"
         return
     fi
 
@@ -58,31 +58,47 @@ create() {
     # Add and commit the problem to Git
     git add .
     git commit -S -s -m "feat(solution): add the solution in $1 to the problem ${split_string[0]}"
-    echo -e "\nThe new solution of the problem $2 in $1 programming language committed."
+    echo -e "\nThe new solution of the problem $2 in $1 programming language has been committed"
 }
 
+# Update function is used to update an existing problem with either adding a new solution in a different language,
+# or editing an old solution, if and only if there is a previous problem with the same name as provided
 update() {
+    # Check whether there exists a problem with the same name as provided
+    # If not, print the help message telling user yo use the `create` command instead, and exit
     if [ ! -d "problems/$2" ]; then
         echo -e "The problem \"$2\" does not exist. If you want to create it, try:\n"
         echo -e "\t ./ctl.sh create --$1 $2"
-
         return
     fi
 
+    # Check whether the updated solution is in a new language or not
+    # If so, create a new file for the new language
+    if [ ! -f "problems/$2/solution.$1" ]; then
+        touch "problems/$2/solution.$1"
+    fi
     vim "problems/$2/solution.$1"
-    echo -e "The solution of the problem $2 in $1 programming language updated\n"
+    echo -e "The solution of the problem $2 in $1 programming language has been updated\n"
 
-    IFS='-'
-    read -ra split_string <<< "$2"
+    # Prompt a message to receive the confirmation of user whether to commit the new problem
+    read -p "Do you want to commit this updated solution? (y/n, default y) " confirm
+    # If user does not confirm, discard all changes, and exit
+    if [[ "$confirm" == "n" ]]; then
+        git reset --hard HEAD
+        echo -e "\nAll changes have been discarded"
+        return
+    fi
 
+    # Extract the id of the problem
+    IFS='-' read -ra split_string <<< "$2"
+    # Add and commit the problem to Git
     git add .
     git commit -S -s -m "feat(solution): update the solution in $1 to the problem ${split_string[0]}"
-
-    echo -e "\nThe solution of the problem $2 in $1 programming language committed"
+    echo -e "\nThe solution of the problem $2 in $1 programming language has been committed"
 }
 
 info() {
-    echo "This feature has not been implemented yet."
+    echo "This feature has not been implemented yet"
 }
 
 # Main procedure starts
