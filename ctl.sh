@@ -100,7 +100,13 @@ update() {
 }
 
 info() {
-    echo "This feature has not been implemented yet"
+    problem_name="$(ls problems/ | grep -E "^$1.*")"
+    if [[ -z "$problem_name" ]]; then
+        echo -e "No match found: $1"
+    else
+        echo -e "$problem_name\n"
+        ls "problems/$problem_name"
+    fi
 }
 
 # Main procedure starts
@@ -112,7 +118,9 @@ shift
 case "$command" in
 # If command `create` is specified
 create)
-    language=""
+    if [[ $# -ne 2 ]]; then
+        echo -e "Invalid number of arguments. See './ctl.sh help'"
+    fi
 
     opt="$1"
     shift
@@ -150,7 +158,9 @@ create)
     ;;
 # If command `update` is specified
 update)
-    language=""
+    if [[ $# -ne 2 ]]; then
+        echo -e "Invalid number of arguments. See './ctl.sh help'"
+    fi
 
     opt="$1"
     shift
@@ -188,7 +198,14 @@ update)
     ;;
 # If command `info` is specified
 info)
-    info
+    if [[ $# -ne 1 ]]; then
+        echo -e "Invalid number of arguments. See './ctl.sh help'"
+    fi
+
+    pattern="$1"
+    shift
+
+    info "$pattern"
     ;;
 # If command `help` is specified
 help)
