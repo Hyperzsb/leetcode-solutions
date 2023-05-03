@@ -13,16 +13,22 @@ help() {
     echo -e "\t help   \t print this help message and exist\n"
 
     echo -e "OPTION"
-    echo -e "\t -c     \t use the C programming language"
-    echo -e "\t -cpp   \t use the C++ programming language"
-    echo -e "\t -go    \t use the Go programming language"
-    echo -e "\t -js    \t use the JavaScript programming language"
-    echo -e "\t -py    \t use the Python programming language\n"
+    echo -e "\t --c     \t use the C programming language"
+    echo -e "\t --cpp   \t use the C++ programming language"
+    echo -e "\t --go    \t use the Go programming language"
+    echo -e "\t --js    \t use the JavaScript programming language"
+    echo -e "\t --py    \t use the Python programming language"
+    echo -e "\t --sql   \t use the SQL for database scripts\n"
+
+    echo -e "PROBLEM_NAME"
+    echo -e "\t Scheme:  <problem_id>-<problem_name (separated by dashes)>"
+    echo -e "\t Example: 123-A-New-Problem\n"
 
     echo -e "EXAMPLES"
     echo -e "\t ./ctl.sh create --c 123-A-New-Problem"
     echo -e "\t ./ctl.sh update --go 123-A-New-Problem"
-    echo -e "\t ./ctl.sh info 123\n"
+    echo -e "\t ./ctl.sh info 123"
+    echo -e "\t ./ctl.sh help\n"
 }
 
 # Create function is used to create a new solution of a new problem,
@@ -140,6 +146,9 @@ create)
     --py)
         language="py"
         ;;
+    --sql)
+        language="sql"
+        ;;
     *)
         echo -e "Invalid option. See './ctl.sh help'"
         exit 1
@@ -179,6 +188,9 @@ update)
         ;;
     --py)
         language="py"
+        ;;
+    --sql)
+        language="sql"
         ;;
     *)
         echo -e "Invalid option. See './ctl.sh help'"
