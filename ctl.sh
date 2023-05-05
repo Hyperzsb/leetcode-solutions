@@ -16,6 +16,7 @@ help() {
     echo -e "\t --c     \t use the C programming language"
     echo -e "\t --cpp   \t use the C++ programming language"
     echo -e "\t --go    \t use the Go programming language"
+    echo -e "\t --java  \t use the Java programming language"
     echo -e "\t --js    \t use the JavaScript programming language"
     echo -e "\t --py    \t use the Python programming language"
     echo -e "\t --sql   \t use the SQL for database scripts\n"
@@ -140,6 +141,9 @@ create)
     --go)
         language="go"
         ;;
+    --java)
+        language="java"
+        ;;
     --js)
         language="js"
         ;;
@@ -182,6 +186,9 @@ update)
         ;;
     --go)
         language="go"
+        ;;
+    --java)
+        language="java"
         ;;
     --js)
         language="js"
